@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-12">
+    <%= form_with model: @product do |f| %>
+      <div class="form-group">
+        <%= f.label :product_name %>
+        <%= f.text_field :product_name, autofocus: true, autocomplete: 'product_name', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :product_desc %>
+        <%= f.text_area :product_desc, autocomplete: 'product_desc', class: 'form-control' %>
+      </div>
+
+      <div class="form-row">
+          <div class="form-group col-md-6">
+              <%= f.label :brand %>
+              <%= f.text_field :brand, autofocus: true, autocomplete: 'brand', class: 'form-control' %>
+          </div>
+
+          <div class="form-group col-md-6">
+              <%= f.label :price %>
+              <%= f.number_field :price, autofocus: true, autocomplete: 'price', class: 'form-control' %>
+          </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit(@product.new_record? ? "Add" : "Update" , class: "btn btn-outline-success" )%>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+
+

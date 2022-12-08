@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   rolify
-  has_many :products, through: :roles, source: :resource, source_type:  :Product
-  has_many :created_products, -> { where(roles: {name: :creator}) }, through: :roles, source: :resource, source_type:  :Product
+  has_many :products, through: :roles, source: :resource, source_type:  :Product, dependent: :destroy
+  has_many :created_products, -> { where(roles: {name: :creator}) }, through: :roles, source: :resource, source_type:  :Product, dependent: :destroy
+
+  has_many :orders, dependent: :destroy
 end
