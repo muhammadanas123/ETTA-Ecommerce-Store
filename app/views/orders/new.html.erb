@@ -1,0 +1,50 @@
+<h1>Welcome to the order page</h1>
+
+<div class="container">
+    <div class="row">
+    <div class="col-12">
+        <%= form_with model: [@product, @product.orders.build ] do |f| %>
+            <div class="form-group">
+                <%= f.label :address %>
+                <%= f.text_area :address, autofocus: true, autocomplete: 'address', class: 'form-control' %>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <%= f.label :zipcode %>
+                    <%= f.number_field :zipcode, autocomplete: 'zipcode', class: 'form-control' %>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <%= f.label :contact %>
+                    <%= f.number_field :contact, autofocus: true, autocomplete: 'contact', class: 'form-control' %>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <%= f.label :city %>
+                    <%= f.text_field :city, autocomplete: 'city', class: 'form-control' %>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <%= f.label :state %>
+                    <%= f.text_field :state, autofocus: true, autocomplete: 'state', class: 'form-control' %>
+                </div>
+
+            </div>
+
+            <div class="actions">
+                <%= f.submit("order" , class: "btn btn-outline-success")%>
+            </div>
+        <% end %>
+
+    </div>
+    </div>
+</div>
+
+
+
