@@ -32,7 +32,14 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @product = Product.find(params[:id])
+        # byebug
+        if !Product.exists?(params[:id])
+            flash["alert"] = "product not exist"
+            redirect_to products_path
+        else
+            @product = Product.find(params[:id])
+        end
+            
         # render json: @product
     end
 

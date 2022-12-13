@@ -3,8 +3,7 @@ class OrdersController < ApplicationController
     def new
         # byebug
         @product = Product.find(params[:product_id])
-        @order = @product.orders.new
-        
+    
         
     end
 
@@ -24,15 +23,44 @@ class OrdersController < ApplicationController
     end
 
     def index
-        @orders = Order.all
+        # byebug
+        if Product.exists?(params[:product_id])
+            @product = Product.find(params[:product_id])
+            @orders = @product.orders
+        else
+            redirect_to products_path, alert: "Product not exist"
+
+        end
 
         # render json: @orders
     end
 
+    def edit
+        @product = Product.find(params[:product_id])
+    end
+
+    def update
+        @product = Product.find(params[:product_id])
+        @order = @product.orders.find(params[:id])
+        if @order.update(order_params)
+            redirect_to product_order_path(@product,@order), notice: 'Order was successfully updated.'
+        else
+            render action: "edit"
+        end
+    end
+
     def show
-        @order = Order.find(params[:id])
+        @product = Product.find(params[:product_id])
+        if Order.exists?(params[:id])
+            @order = @product.orders.find(params[:id])
+        else
+            redirect_to product_orders_path, alert: "order not exist"
+        end
+        # @order = Order.find(params[:id])
 
     end
+
+    
 
 
     def destroy
@@ -47,8 +75,11 @@ class OrdersController < ApplicationController
 
 
     private
+
     def order_params
         params.require(:order).permit(:address, :zipcode, :contact, :city, :state)
     end
+
+        
 
 end

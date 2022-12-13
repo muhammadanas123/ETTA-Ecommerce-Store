@@ -6,4 +6,15 @@ class Product < ApplicationRecord
 
     has_many :carts, dependent: :destroy
     has_many :orders, through: :carts, dependent: :destroy
+    validate :id_exist?
+
+
+    private
+
+    def id_exist?
+        if !id.present?
+            errors.add("id field is empty")
+        end
+
+    end
 end

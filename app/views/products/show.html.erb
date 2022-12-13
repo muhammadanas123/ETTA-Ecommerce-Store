@@ -12,6 +12,7 @@
             <p class="card-text"><%= @product.brand%></p>
             <p class="card-text"><small class="text-muted"><%= @product.price%></small></p>
             <%= link_to "order" , new_product_order_path(@product), class: "btn btn-outline-success btn-sm" %>
+            <%= link_to "total orders" , product_orders_path(@product), class: "btn btn-outline-info btn-sm" %>
 
         </div>
         </div>
