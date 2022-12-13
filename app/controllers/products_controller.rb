@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
         @product = Product.new(product_params)
         if @product.save
             redirect_to @product, notice: 'Product was successfully created.'
+            current_user.add_role :creator, @product
         else
             render action: "new"
         end
