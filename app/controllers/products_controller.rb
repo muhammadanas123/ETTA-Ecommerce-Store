@@ -2,7 +2,18 @@ class ProductsController < ApplicationController
     before_action :authencition, only: [:new, :create, :edit, :destroy]
 
     def index
-        @products = Product.all
+        # byebug
+        if params[:category].present?
+            @products = Product.search_with_category(params[:category])
+        elsif params[:search]
+            @products = Product.search(params[:search])
+        
+        else
+            @products = Product.all
+
+
+        end
+        # byebug
         # render json: @products
     end
     def new
@@ -52,7 +63,7 @@ class ProductsController < ApplicationController
 
     private
     def product_params
-        params.require(:product).permit(:product_name, :product_desc, :brand, :price)
+        params.require(:product).permit(:product_name, :product_desc, :brand, :price, :category, :search)
     end
 
     def authencition

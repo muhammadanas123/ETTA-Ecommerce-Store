@@ -23,6 +23,12 @@
           </div>
       </div>
 
+      <div class="control-group ">
+        <%= f.label :category, class: "control-group"%>
+        <%= f.select( :category, options_for_select([['electronics', 'electronics'],['appliance', 'appliance'],['clothing','clothing']])) %> 
+      </div>
+
+
       <div class="actions">
         <%= f.submit(@product.new_record? ? "Add" : "Update" , class: "btn btn-outline-success" )%>
       </div>

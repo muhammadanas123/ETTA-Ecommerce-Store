@@ -1,5 +1,11 @@
 <div class="container">
     <h2>Product#index</h2>
+
+    <%= form_tag(products_path, method: :get)  do |f| %>
+            <%= label_tag :category %>
+            <%= select_tag( :category, options_for_select([['electronics', 'electronics'],['appliance', 'appliance'],['clothing','clothing']]), class: "custom-select col-3") %> 
+            <%= submit_tag('Filter', class: "btn btn-outline-info ") %>
+    <%end%>
     <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>

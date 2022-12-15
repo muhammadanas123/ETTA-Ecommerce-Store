@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
     def new
         # byebug
         @product = Product.find(params[:product_id])
+        @order = @product.orders.build
     
         
     end
@@ -37,6 +38,7 @@ class OrdersController < ApplicationController
 
     def edit
         @product = Product.find(params[:product_id])
+        @order = @product.orders.find(params[:id])
     end
 
     def update
