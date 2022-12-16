@@ -14,13 +14,10 @@ class OrdersController < ApplicationController
         @order = @product.orders.create(user_id: current_user.id, address: params[:order][:address], zipcode: params[:order][:zipcode], contact: params[:order][:contact], city: params[:order][:city], state: params[:order][:state])
         current_user.add_role :buyer, @product
         # @order.user_id = current_user.id
-        if @order.save
-            redirect_to product_orders_path, notice: "Order was successfully placed."
+        redirect_to product_orders_path
 
             # render json: @order
-        else
-            render action: "new"
-        end
+
     end
 
     def index

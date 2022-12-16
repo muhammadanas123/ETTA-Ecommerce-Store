@@ -1,18 +1,39 @@
 @import 'bootstrap/dist/css/bootstrap';
+// @import "font-awesome";
 
-// .navbar {
 
-//     background-color: #FDF6EA !important;
+.button-top-margin {
+
+    margin-top: 13px;
     
-// }
+}
+
+.right-margin{
+  margin-left: 5px;
+
+}
+
+.left-margin{
+  margin-right: 5px;
+
+}
+.tag-bottom-margin{
+  margin-bottom: 13px;
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
 
     
 
-// .navbar-brand {
+.navbar {
 
-// font-size: 3rem;
+  background-color: #7e7a75 !important;
 
-// }
+}
 
     
 

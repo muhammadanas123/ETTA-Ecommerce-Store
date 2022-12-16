@@ -1,5 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
         <%= link_to "ETTA", root_path, class:"navbar-brand"%>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,14 +27,18 @@
             </form> 
 <%
 =end%>
-
+            
+            <i class="fa-regular fa-user"></i> [ <%= label_tag current_user.firstname, current_user.firstname, class: "text-monospace" %> ]
             <%= form_tag(products_path, method: :get)  do |f| %>
                     <%= text_field_tag :search, params[:search] %> 
                     <%= submit_tag('Search', name: :nill, class: "btn btn-outline-success my-2 my-sm-0") %>
 
             <%end%>
 
+            <%if current_user %>
+                <%= link_to "sign out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger my-2 my-sm-0 left-margin" %>
+            <%end%>
+
 
         </div>
-    </div>
 </nav>

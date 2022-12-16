@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :products do
     resources :orders
+    resources :comments, except: [:show, :index]
+  
   end
   
 end

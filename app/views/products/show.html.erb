@@ -1,6 +1,6 @@
 <div class="container">
     <h2>Product</h2>
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3" style="max-width: 555px;">
     <div class="row no-gutters">
         <div class="col-md-4">
         <img src="https://images.unsplash.com/photo-1511556820780-d912e42b4980?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" class="card-img" alt="<%= @product.product_name%>">
@@ -16,6 +16,26 @@
 
         </div>
         </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-12">
+        <hr class="col-md-6"/>
+
+        <%= label_tag :Comments, nil, class: "text-monospace font-weight-bold"  %><br/>
+
+        <% if @product.comments.any? %>
+            <% @product.comments.each do |comment| %>
+                <%= label_tag comment.user, comment.user, class: "text-monospace font-weight-bold" %> : <%= comment.body%><br/>
+            <%end%>
+        <%end%>
+
+        <%= form_with model: [@product, @product.comments.build ] do |f| %>
+            <%= f.label(:Comment, class: "text-monospace font-weight-bold") %>
+            <%= f.text_area :body, autofocus: true, autocomplete: 'body', class: 'form-control col-md-6' %>
+            <%= f.submit("Comment" , class: "btn btn-outline-dark button-top-margin")%>
+        <% end %>
+
     </div>
     </div>
 </div>

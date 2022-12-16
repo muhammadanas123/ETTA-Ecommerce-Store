@@ -7,7 +7,9 @@ class Product < ApplicationRecord
     has_many :carts, dependent: :destroy
     has_many :orders, through: :carts, dependent: :destroy
 
-    validates :product_name, :product_desc, presence: true, length: { minimum: 7 }
+    has_many :comments, dependent: :destroy 
+
+    # validates :product_name, :product_desc, presence: true, length: { minimum: 7 }
     validates :price, presence: true
     # validate :id_exist?
 

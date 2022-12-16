@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   has_many :products, through: :carts
 
   validates :address, presence: true
-  validates :contact, presence: true, length: { maximum: 11, minimum: 11 }
+  validates :contact, presence: true, length: { minimum: 11, maximum: 11 }
 
 
   
