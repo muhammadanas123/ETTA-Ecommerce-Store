@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
         @product = Product.find(params[:product_id])
         @comment = @product.comments.create(comment_params)
         @comment.update(user: current_user.firstname)
-        byebug
+        # byebug
 
         redirect_to product_path(@product)
 
@@ -22,21 +22,32 @@ class CommentsController < ApplicationController
     end
 
     def edit
+        # byebug
         @product = Product.find(params[:product_id])
         @comment = @product.comments.find(params[:id])
 
+        render "products/show"
+        # byebug
     end
 
     def update
         @product = Product.find(params[:product_id])
         @comment = @product.comments.find(params[:id])
-        redirect_to product_path(@product)
-        render action: "edit"
+        if @comment.update(comment_params)
+            redirect_to product_path(@product), notice: "succefully updated"
+        else
+            flash.now["alert"] = "not updated"
+            render "products/show"
+            
+        end
         
     end
 
     def destroy
-
+        @product = Product.find(params[:product_id])
+        @comment = @product.comments.find(params[:id])
+        @comment.destroy
+        redirect_to product_path(@product)
     end
 
     private

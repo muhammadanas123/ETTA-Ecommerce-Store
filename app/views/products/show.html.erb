@@ -26,15 +26,34 @@
 
         <% if @product.comments.any? %>
             <% @product.comments.each do |comment| %>
-                <%= label_tag comment.user, comment.user, class: "text-monospace font-weight-bold" %> : <%= comment.body%><br/>
+                <%= label_tag comment.user, comment.user, class: "text-monospace font-weight-bold" %> : <%= comment.body%>
+                <%= link_to "edit", edit_product_comment_path(@product, comment), class: "btn btn-outline-success btn-sm"  %>
+                <%= link_to "delete", product_comment_path(@product, comment), method: :delete, class: "btn btn-outline-danger btn-sm" %>
+                <br/>
+
             <%end%>
+            
         <%end%>
 
-        <%= form_with model: [@product, @product.comments.build ] do |f| %>
-            <%= f.label(:Comment, class: "text-monospace font-weight-bold") %>
-            <%= f.text_area :body, autofocus: true, autocomplete: 'body', class: 'form-control col-md-6' %>
-            <%= f.submit("Comment" , class: "btn btn-outline-dark button-top-margin")%>
-        <% end %>
+        <% if params[:action]=="edit"%>
+            <%= form_with model: [@product, @comment ] do |f| %>
+
+                <%= f.label(:Comment, class: "text-monospace font-weight-bold") %>
+                <%= f.text_area :body, autofocus: true, autocomplete: 'body', class: 'form-control col-md-6' %>
+                <%= f.submit("Update" , class: "btn btn-outline-dark button-top-margin")%>
+            <% end %>
+
+        <%else%>
+            <%= form_with model: [@product, @product.comments.build ] do |f| %>
+
+                <%= f.label(:Comment, class: "text-monospace font-weight-bold") %>
+                <%= f.text_area :body, autofocus: true, autocomplete: 'body', class: 'form-control col-md-6' %>
+                <%= f.submit("Comment" , class: "btn btn-outline-dark button-top-margin")%>
+            <% end %>
+
+        <%end%>
+
+        
 
     </div>
     </div>

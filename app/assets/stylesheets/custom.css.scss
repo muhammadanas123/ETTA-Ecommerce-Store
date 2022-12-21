@@ -35,6 +35,18 @@ hr {
 
 }
 
+// .hover-effect:hover{
+//   background-color: black;
+
+// }
+
+.hide {
+  display: none;
+}
+
+.show:hover + .hide {
+  display: block;
+}
     
 
 // h1 {

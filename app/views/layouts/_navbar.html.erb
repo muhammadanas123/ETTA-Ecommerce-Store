@@ -27,8 +27,11 @@
             </form> 
 <%
 =end%>
+            <% if current_user %>
+                <i class="fa-regular fa-user"></i> [ <%= label_tag current_user.firstname, current_user.firstname, class: "text-monospace" %> ]
+
+            <%end%>
             
-            <i class="fa-regular fa-user"></i> [ <%= label_tag current_user.firstname, current_user.firstname, class: "text-monospace" %> ]
             <%= form_tag(products_path, method: :get)  do |f| %>
                     <%= text_field_tag :search, params[:search] %> 
                     <%= submit_tag('Search', name: :nill, class: "btn btn-outline-success my-2 my-sm-0") %>
