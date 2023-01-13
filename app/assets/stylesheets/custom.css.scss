@@ -8,6 +8,23 @@
     
 }
 
+.image{
+
+  background-image: url("./homepage1.jpg");
+  background-position: center center; 
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  image-resolution: 300dpi;
+
+
+}
+
+.top-margin {
+
+  margin-top: 13px;
+  
+}
+
 .right-margin{
   margin-left: 5px;
 
@@ -40,14 +57,26 @@ hr {
 
 // }
 
-.hide {
-  display: none;
+// .hide {
+//   display: none;
+// }
+
+// .show:hover + .hide {
+//   display: block;
+// }
+    
+// .left{
+//   position:relative; left:80px;
+// }
+
+.center{
+  align-content: center;
 }
 
-.show:hover + .hide {
-  display: block;
-}
-    
+
+
+
+
 
 // h1 {
 
